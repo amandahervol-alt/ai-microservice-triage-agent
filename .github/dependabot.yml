@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/ad-service"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - gradle
+  - package-ecosystem: "pip"
+    directory: "/ai-agent"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - pip
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - dependencies
+      - github-actions
