@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ai-agent:
+    name: Python agent tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ai-agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+      - name: Compile check
+        run: python -m compileall -q .
+      - name: Run tests
+        run: python -m pytest -v
+
+  ad-service:
+    name: Java ad-service build and tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ad-service
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.5'
+      - name: Build and test
+        run: gradle build --no-daemon
