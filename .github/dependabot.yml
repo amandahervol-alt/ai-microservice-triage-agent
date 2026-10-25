@@ -8,6 +8,10 @@ updates:
     labels:
       - dependencies
       - gradle
+    ignore:
+      # Stay on Spring Boot 3.x. Spring Boot 4 needs Gradle 8.14+ and test API migrations.
+      - dependency-name: "org.springframework.boot*"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "pip"
     directory: "/ai-agent"
     schedule:
