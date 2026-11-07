@@ -1,4 +1,4 @@
 kafka-python-ng==2.2.3
 psycopg2-binary==2.9.13
-pydantic==2.14.1
+pydantic==2.14.2
 python-dotenv==1.2.4
